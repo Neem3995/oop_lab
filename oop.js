@@ -64,11 +64,6 @@ class Character {
   }
 }
 
-// // creating a test character
-// const testCharacter = new Character("Test Character");
-
-// console.log(testCharacter);
-// testCharacter.roll();
 
 //=============================
 //        Class Features
@@ -81,10 +76,10 @@ class Adventurer extends Character {
     // getting the name, health and inventory from Character
     super(name);
 
-    // Adventurers have their own specialized roles
+    // adding the adventurers role
     this.role = role;
 
-    // every adventurer starts off with these items
+    // every adventurer starts with these items
     this.inventory.push("bedroll", "50 gold coins");
   }
 
@@ -96,39 +91,6 @@ class Adventurer extends Character {
     super.roll();
   }
 }
-
-// creating a test adventurer
-const testAdventurer = new Adventurer("Tony", "Fighter");
-
-console.log(testAdventurer);
-testAdventurer.scout();
-
-// creating Robin using the Character class
-const robin = new Character("Robin");
-
-// adding Robins inventory
-robin.inventory = ["sword", "potion", "artifact"];
-
-// creating Leo as another character
-robin.companion = new Character("Leo");
-robin.companion.type = "Cat";
-
-// giving Leo his own companion
-robin.companion.companion = new Character("Frank");
-robin.companion.companion.type = "Flea";
-
-// adding Franks belongings
-robin.companion.companion.inventory = ["small hat", "sunglasses"];
-
-// checking all of the new character objects
-console.log(robin);
-console.log(robin.companion);
-console.log(robin.companion.companion);
-
-// now every character can roll
-robin.roll();
-robin.companion.roll();
-robin.companion.companion.roll();
 
 // Companion also inherits everything from Character
 class Companion extends Character {
@@ -149,8 +111,28 @@ class Companion extends Character {
   }
 }
 
-// creating a test companion
-const testCompanion = new Companion("Rockey", "Dog");
+// creating Robin as an Adventurer
+const robin = new Adventurer("Robin", "Fighter");
 
-console.log(testCompanion);
-testCompanion.assist();
+// adding Robins adventure items
+// push keeps the bedroll and gold already in the inventory
+robin.inventory.push("sword", "potion", "artifact");
+
+// creating Leo using the Companion class
+robin.companion = new Companion("Leo", "Cat");
+
+// giving Leo his own companion
+robin.companion.companion = new Companion("Frank", "Flea");
+
+// adding Franks belongings
+robin.companion.companion.inventory.push("small hat", "sunglasses");
+
+// checking the new party
+console.log(robin);
+console.log(robin.companion);
+console.log(robin.companion.companion);
+
+// testing their specialized methods
+robin.scout();
+robin.companion.assist();
+robin.companion.companion.assist();
