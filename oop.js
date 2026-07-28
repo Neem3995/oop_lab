@@ -13,6 +13,13 @@ const adventurer = {
   companion: {
     name: "Leo",
     type: "Cat",
+
+    // giving Leo his own companion
+    companion: {
+      name: "Frank",
+      type: "Flea",
+      belongings: ["small hat", "sunglasses"],
+    },
   },
 };
 
@@ -22,5 +29,5 @@ for (const item of adventurer.inventory) {
   console.log(item);
 }
 
-// checking that Leo was added
-console.log(adventurer.companion);
+// checking that Frank was added
+console.log(adventurer.companion.companion);
