@@ -41,3 +41,31 @@ for (const item of adventurer.inventory) {
 adventurer.roll();
 adventurer.roll();
 adventurer.roll(5);
+
+//=============================
+//        Class Fantasy
+//           Part 2
+//=============================
+
+// creating the basic character class
+// this will be the blueprint for all of our characters
+class Character {
+  constructor(name) {
+    this.name = name;
+    this.health = 100;
+    this.inventory = [];
+  }
+
+  // giving every character the ability to roll
+  roll(mod = 0) {
+    const result = Math.floor(Math.random() * 20) + 1 + mod;
+
+    console.log(`${this.name} rolled a ${result}.`);
+  }
+}
+
+// creating a test character
+const testCharacter = new Character("Test Character");
+
+console.log(testCharacter);
+testCharacter.roll();
