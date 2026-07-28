@@ -138,7 +138,7 @@ class AdventurerFactory {
 
     this.adventurers.push(newAdventurer);
 
-    // returning the adventurer so we can save it in a variable
+    // returning the new adventurer
     return newAdventurer;
   }
 
@@ -155,8 +155,11 @@ class AdventurerFactory {
   }
 }
 
-// creating Robin as an Adventurer
-const robin = new Adventurer("Robin", "Fighter");
+// creating a factory for Fighters
+const fighterFactory = new AdventurerFactory("Fighter");
+
+// creating Robin with the factory
+const robin = fighterFactory.generate("Robin");
 
 // adding Robins adventure items
 // push keeps the bedroll and gold already in the inventory
@@ -181,19 +184,11 @@ robin.scout();
 robin.companion.assist();
 robin.companion.companion.assist();
 
-// console.log(Character.MAX_HEALTH);
-// console.log(Adventurer.ROLES);
+// checking the fighter factory
+console.log(fighterFactory.adventurers);
 
-// creating a factory for Healers
-const healerFactory = new AdventurerFactory("Healer");
+// finding Robin by position
+console.log(fighterFactory.findByIndex(0));
 
-// generating two new Healers
-const luna = healerFactory.generate("Luna");
-const mercy = healerFactory.generate("Mercy");
-
-// checking the adventurers created by the factory
-console.log(healerFactory.adventurers);
-
-// finding adventurers in two different ways
-console.log(healerFactory.findByIndex(0));
-console.log(healerFactory.findByName("Mercy"));
+// finding Robin by name
+console.log(fighterFactory.findByName("Robin"));
