@@ -21,6 +21,14 @@ const adventurer = {
       belongings: ["small hat", "sunglasses"],
     },
   },
+
+  // creating a dice roll method
+  // mod can add a bonus to the final roll
+  roll(mod = 0) {
+    const result = Math.floor(Math.random() * 20) + 1 + mod;
+
+    console.log(`${this.name} rolled a ${result}.`);
+  },
 };
 
 // looping through Robins inventory
@@ -29,5 +37,7 @@ for (const item of adventurer.inventory) {
   console.log(item);
 }
 
-// checking that Frank was added
-console.log(adventurer.companion.companion);
+// testing Robins roll method a few times
+adventurer.roll();
+adventurer.roll();
+adventurer.roll(5);
