@@ -70,6 +70,39 @@ class Character {
 // console.log(testCharacter);
 // testCharacter.roll();
 
+//=============================
+//        Class Features
+//           Part 3
+//=============================
+
+// Adventurer inherits everything from Character
+class Adventurer extends Character {
+  constructor(name, role) {
+    // getting the name, health and inventory from Character
+    super(name);
+
+    // Adventurers have their own specialized roles
+    this.role = role;
+
+    // every adventurer starts off with these items
+    this.inventory.push("bedroll", "50 gold coins");
+  }
+
+  // Adventurers can scout ahead
+  scout() {
+    console.log(`${this.name} is scouting ahead...`);
+
+    // using the roll method from Character
+    super.roll();
+  }
+}
+
+// creating a test adventurer
+const testAdventurer = new Adventurer("Tony", "Fighter");
+
+console.log(testAdventurer);
+testAdventurer.scout();
+
 // creating Robin using the Character class
 const robin = new Character("Robin");
 
