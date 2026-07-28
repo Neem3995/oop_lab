@@ -244,3 +244,35 @@ function duel(adventurerOne, adventurerTwo) {
 
 // starting the duel
 duel(robin, giorno);
+
+//=============================
+//       Experimentation
+//           Part 7
+//=============================
+
+// Enemy inherits everything from Character
+class Enemy extends Character {
+  constructor(name, type) {
+    super(name);
+
+    // adding the enemy type
+    this.type = type;
+  }
+
+  // enemies can attack another character
+  attack(character) {
+    console.log(`${this.name} attacks ${character.name}!`);
+
+    character.health--;
+
+    console.log(`${character.name} now has ${character.health} health.`);
+  }
+}
+
+// creating an enemy
+const goblin = new Enemy("Grim", "Goblin");
+
+console.log(goblin);
+
+// testing the enemy attack method
+goblin.attack(robin);
