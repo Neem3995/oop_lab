@@ -64,8 +64,35 @@ class Character {
   }
 }
 
-// creating a test character
-const testCharacter = new Character("Test Character");
+// // creating a test character
+// const testCharacter = new Character("Test Character");
 
-console.log(testCharacter);
-testCharacter.roll();
+// console.log(testCharacter);
+// testCharacter.roll();
+
+// creating Robin using the Character class
+const robin = new Character("Robin");
+
+// adding Robins inventory
+robin.inventory = ["sword", "potion", "artifact"];
+
+// creating Leo as another character
+robin.companion = new Character("Leo");
+robin.companion.type = "Cat";
+
+// giving Leo his own companion
+robin.companion.companion = new Character("Frank");
+robin.companion.companion.type = "Flea";
+
+// adding Franks belongings
+robin.companion.companion.inventory = ["small hat", "sunglasses"];
+
+// checking all of the new character objects
+console.log(robin);
+console.log(robin.companion);
+console.log(robin.companion.companion);
+
+// now every character can roll
+robin.roll();
+robin.companion.roll();
+robin.companion.companion.roll();
