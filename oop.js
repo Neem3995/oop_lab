@@ -129,3 +129,28 @@ console.log(robin.companion.companion);
 robin.roll();
 robin.companion.roll();
 robin.companion.companion.roll();
+
+// Companion also inherits everything from Character
+class Companion extends Character {
+  constructor(name, type) {
+    // getting the name, health and inventory from Character
+    super(name);
+
+    // adding the type of companion
+    this.type = type;
+  }
+
+  // Companions can help the adventurer
+  assist() {
+    console.log(`${this.name} is helping the party...`);
+
+    // using the roll method from Character
+    super.roll();
+  }
+}
+
+// creating a test companion
+const testCompanion = new Companion("Rockey", "Dog");
+
+console.log(testCompanion);
+testCompanion.assist();
