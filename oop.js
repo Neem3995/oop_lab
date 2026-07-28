@@ -48,11 +48,13 @@ adventurer.roll(5);
 //=============================
 
 // creating the basic character class
-// this will be the blueprint for all of our characters
 class Character {
+  // every character has the same max health
+  static MAX_HEALTH = 100;
+
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = Character.MAX_HEALTH;
     this.inventory = [];
   }
 
@@ -72,11 +74,20 @@ class Character {
 
 // Adventurer inherits everything from Character
 class Adventurer extends Character {
+  // these are the allowed adventurer roles
+  static ROLES = ["Fighter", "Healer", "Wizard"];
+
   constructor(name, role) {
     // getting the name, health and inventory from Character
     super(name);
 
-    // adding the adventurers role
+    // checking if the role is allowed
+    if (!Adventurer.ROLES.includes(role)) {
+      throw new Error(
+        `${role} is not a valid role. Choose Fighter, Healer, or Wizard.`
+      );
+    }
+
     this.role = role;
 
     // every adventurer starts with these items
@@ -86,8 +97,6 @@ class Adventurer extends Character {
   // Adventurers can scout ahead
   scout() {
     console.log(`${this.name} is scouting ahead...`);
-
-    // using the roll method from Character
     super.roll();
   }
 }
@@ -136,3 +145,6 @@ console.log(robin.companion.companion);
 robin.scout();
 robin.companion.assist();
 robin.companion.companion.assist();
+
+console.log(Character.MAX_HEALTH);
+console.log(Adventurer.ROLES);
