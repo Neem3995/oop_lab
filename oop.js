@@ -120,6 +120,41 @@ class Companion extends Character {
   }
 }
 
+//=============================
+//       Adventurer Factory
+//           Part 5
+//=============================
+
+// factory used to create adventurers with the same role
+class AdventurerFactory {
+  constructor(role) {
+    this.role = role;
+    this.adventurers = [];
+  }
+
+  // creating a new adventurer
+  generate(name) {
+    const newAdventurer = new Adventurer(name, this.role);
+
+    this.adventurers.push(newAdventurer);
+
+    // returning the adventurer so we can save it in a variable
+    return newAdventurer;
+  }
+
+  // finding an adventurer by their position
+  findByIndex(index) {
+    return this.adventurers[index];
+  }
+
+  // finding an adventurer by their name
+  findByName(name) {
+    return this.adventurers.find((adventurer) => {
+      return adventurer.name === name;
+    });
+  }
+}
+
 // creating Robin as an Adventurer
 const robin = new Adventurer("Robin", "Fighter");
 
@@ -146,5 +181,19 @@ robin.scout();
 robin.companion.assist();
 robin.companion.companion.assist();
 
-console.log(Character.MAX_HEALTH);
-console.log(Adventurer.ROLES);
+// console.log(Character.MAX_HEALTH);
+// console.log(Adventurer.ROLES);
+
+// creating a factory for Healers
+const healerFactory = new AdventurerFactory("Healer");
+
+// generating two new Healers
+const luna = healerFactory.generate("Luna");
+const mercy = healerFactory.generate("Mercy");
+
+// checking the adventurers created by the factory
+console.log(healerFactory.adventurers);
+
+// finding adventurers in two different ways
+console.log(healerFactory.findByIndex(0));
+console.log(healerFactory.findByName("Mercy"));
